@@ -25,16 +25,10 @@ int ForearmLength = 8;
 int NeckHeight = 4;
 int TotalHeight = LegHeight+BodyHeight+HeadSize;
 
-//const int LeftLimb = -1;
-//const int RightLimb = 1;
-
-
 void setup() {
-   // put your setup code here, to run once:
    uView.begin();
    uView.clear(ALL);
    uView.display();
-
 }
 
 void loop() {
