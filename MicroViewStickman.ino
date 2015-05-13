@@ -25,6 +25,21 @@ const int ForearmLength = 8;
 const int NeckHeight = 4;
 const int TotalHeight = LegHeight+BodyHeight+HeadSize;
 
+const int SholderMin = -7;
+const int SholderMax = 8;
+const double SholderStepSize = 0.5;
+double sholderRotation = SholderMin;
+int sholderDirection = AnimationForward;
+
+const int ArmMin = -60;
+const int ArmMax = -30;
+const double ArmStepSize = 2;
+double armRotation = ArmMin;
+int armDirection = AnimationForward;
+
+const int CycleTime = 20;
+int lastCycle = 0;
+
 void setup() {
    uView.begin();
    uView.clear(ALL);
@@ -32,18 +47,40 @@ void setup() {
 }
 
 void loop() {
-   uView.clear(PAGE);
+   if (millis()-lastCycle >= CycleTime) {
+      uView.clear(PAGE);
 
-   Point origin = { .x = CENTER_X, .y = CENTER_Y };
+      Point origin = { .x = CENTER_X, .y = CENTER_Y };
 
-   drawBody(origin);
-   drawHead(origin);
-   drawLeg(origin, LimbLeft);
-   drawLeg(origin, LimbRight);
-   drawArm(origin, LimbLeft, 50, 30);
-   drawArm(origin, LimbRight, 7, -60);
+      drawBody(origin);
+      drawHead(origin);
+      drawLeg(origin, LimbLeft);
+      drawLeg(origin, LimbRight);
+      drawArm(origin, LimbLeft, 50, 30);
+      drawArm(origin, LimbRight, sholderRotation, armRotation);
+      uView.display();
 
-   uView.display();
+      animationStep();
+      lastCycle = millis();
+   }
+}
+
+void animationStep() {
+   armRotation += ArmStepSize * armDirection;
+   limitMotion(&armDirection, &armRotation, ArmMin, ArmMax);
+
+   sholderRotation += SholderStepSize * sholderDirection;
+   limitMotion(&sholderDirection, &sholderRotation, SholderMin, SholderMax);
+}
+
+void limitMotion(int *direction, double *rotation, int min, int max) {
+   if (*rotation >= max){
+      *direction = AnimationBack;
+      *rotation = max;
+   } else if (*rotation <= min){
+      *direction = AnimationForward;
+      *rotation = min;
+   }
 }
 
 void drawBody(Point origin) {

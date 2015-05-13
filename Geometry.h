@@ -1,4 +1,10 @@
 
+// Animation Directions
+enum Animation {
+   AnimationForward = 1,
+   AnimationBack = -1
+};
+
 // Limb Directions
 enum Limb {
    LimbLeft = -1,
