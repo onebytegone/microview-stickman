@@ -10,20 +10,20 @@
 #include <MicroView.h>
 #include "Geometry.h"
 
-int SCREEN_WIDTH = uView.getLCDWidth();
-int SCREEN_HEIGHT = uView.getLCDHeight();
+const int SCREEN_WIDTH = uView.getLCDWidth();
+const int SCREEN_HEIGHT = uView.getLCDHeight();
 
-int CENTER_X = SCREEN_WIDTH/2;
-int CENTER_Y = SCREEN_HEIGHT/2;
+const int CENTER_X = SCREEN_WIDTH/2;
+const int CENTER_Y = SCREEN_HEIGHT/2;
 
-int HeadSize = 12;
-int BodyHeight = 14;
-int LegHeight = 22;
-int LegSplit = 10;
-int ArmLength = 7;
-int ForearmLength = 8;
-int NeckHeight = 4;
-int TotalHeight = LegHeight+BodyHeight+HeadSize;
+const int HeadSize = 12;
+const int BodyHeight = 14;
+const int LegHeight = 22;
+const int LegSplit = 10;
+const int ArmLength = 7;
+const int ForearmLength = 8;
+const int NeckHeight = 4;
+const int TotalHeight = LegHeight+BodyHeight+HeadSize;
 
 void setup() {
    uView.begin();
