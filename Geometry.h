@@ -1,5 +1,5 @@
 
-// Limd Directions
+// Limb Directions
 enum Limb {
    LimbLeft = -1,
    LimbRight = 1
