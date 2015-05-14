@@ -37,7 +37,7 @@ const double ArmStepSize = 2;
 double armRotation = ArmMin;
 int armDirection = AnimationForward;
 
-const int CycleTime = 20;
+const int CycleTime = 30;
 int lastCycle = 0;
 
 void setup() {
@@ -48,6 +48,7 @@ void setup() {
 
 void loop() {
    if (millis()-lastCycle >= CycleTime) {
+      lastCycle = millis();
       uView.clear(PAGE);
 
       Point origin = { .x = CENTER_X, .y = CENTER_Y };
@@ -61,7 +62,6 @@ void loop() {
       uView.display();
 
       animationStep();
-      lastCycle = millis();
    }
 }
 
