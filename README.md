@@ -1,6 +1,8 @@
 # MicroView Stickman
 A waving stickman for the MicroView
 
+![Waving stickman](micro-view-stickman.gif)
+
 ## Hardware
   - MicroView (http://microview.io)
 
